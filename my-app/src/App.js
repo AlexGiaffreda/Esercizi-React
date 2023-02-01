@@ -1,15 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 
-function Hi(name){
+function Sum(a,b){
   return (<div>
-    <h1>Hello, {name}</h1>
+    <h2>{a + b}</h2>
     </div>)
 }
 
 function App() {
   return (
-      Hi("Alex")
+      Sum(4, 1)
   );
 }
 
