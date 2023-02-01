@@ -4,9 +4,12 @@ import { Welcome } from './Welcome';
 function App() {
   return (
     <div className="App">
-     <Welcome name="alex" />
+     <Welcome name="" />
     </div>
   );
 }
 
 export default App;
+
+// Se nessuna name prop viene passata al componente Welcome, viene solo renderizzato il testo che non riguarda la prop, in questo caso Hello. //
+// Si può impostare un valore di default per le props con Component.deafultProp e specificando i valori di default. //
