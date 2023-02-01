@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Hi(name){
+  return (<div>
+    <h1>Hello, {name}</h1>
+    </div>)
+}
+
 function App() {
-  const hello = <h1>Hello, World!</h1>
   return (
-    <div className="App">
-      {hello}
-    </div>
+      Hi("Alex")
   );
 }
 
