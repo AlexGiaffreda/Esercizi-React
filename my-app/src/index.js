@@ -1,8 +1,7 @@
 import ReactDOM  from 'react-dom';
-import { Hello } from './Hello';
+import { App } from './App';
 
-const HelloElement = <Hello />
 const root = document.querySelector('#root')
 
-ReactDOM.render(HelloElement, root)
+ReactDOM.render(<App />, root)
 
