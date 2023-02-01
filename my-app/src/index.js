@@ -3,5 +3,5 @@ import { App } from './App';
 
 const root = document.querySelector('#root')
 
-ReactDOM.render(<App />, root)
+ReactDOM.render(<App />, root) 
 
