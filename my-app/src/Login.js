@@ -29,6 +29,15 @@ export default class Login extends React.Component {
         console.log(this.state.check)
     }
 
+    reset = () => {
+        this.setState({
+            username : '',
+            password : '',
+            check : false,
+            disabled: true
+
+        })
+    }
     render(){
         return(
             <div>
@@ -38,6 +47,7 @@ export default class Login extends React.Component {
                 <input type='checkbox' name="check" value={this.state.check} checked={this.state.check} onChange={this.controlHandler}></input>
             </form>
             <button disabled={this.state.disabled} onClick={this.onLogin}>Log in</button>
+            <button onClick={this.reset}>Clear</button>
             </div>
         )
     }
