@@ -4,7 +4,8 @@ export default class Login extends React.Component {
     state = {
         username : '',
         password : '',
-        check : false
+        check : false,
+        disabled: true
     }
 
     controlHandler = (event) => {
@@ -14,18 +15,30 @@ export default class Login extends React.Component {
         const type = event.target.type
         const check = event.target.checked
 
+        console.log(check)
+
         this.setState({
-            [name] : type === 'checkbox' ? check : value
+            [name] : type === 'checkbox' ? check : value,
+            disabled : this.state.text !== '' || this.state.password !== '' ? false : true
         })
+    }
+
+    onLogin = () => {
+        console.log(this.state.username)
+        console.log(this.state.password)
+        console.log(this.state.check)
     }
 
     render(){
         return(
+            <div>
             <form>
                 <input type='username' name='username' value={this.state.username} onChange={this.controlHandler}></input>
                 <input type='password' name='password' value={this.state.password} onChange={this.controlHandler}></input>
-                <input type='checkbox' name='checkbox' onChange={this.controlHandler}></input>
+                <input type='checkbox' name="check" value={this.state.check} checked={this.state.check} onChange={this.controlHandler}></input>
             </form>
+            <button disabled={this.state.disabled} onClick={this.onLogin}>Log in</button>
+            </div>
         )
     }
 }
