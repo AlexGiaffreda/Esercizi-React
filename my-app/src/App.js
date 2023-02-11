@@ -1,11 +1,32 @@
-import TodoList from './TodoList'
+import Todolist from "./TodoList";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <TodoList />
+      <Todolist>
+        {
+          ((item, remover) =>{
+            return(
+              <ul>
+              {item.map((item, index) => (
+                <li key={index}>
+                  {item}
+                  <button
+                    key={index + "btn"}
+                    onClick={() => {
+                      remover(item);
+                    }}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+            )
+          })
+        }
+      </Todolist>
     </div>
   );
 }
 
-export default App;

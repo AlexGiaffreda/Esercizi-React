@@ -1,59 +1,40 @@
-import React from 'react'
+import React from "react";
 
-export default  class Todolist extends React.Component {
+export default class Todolist extends React.Component {
+  state = {
+    item: ["Latte", "Pane", "Carne", "Pesce"],
+    addItems: "",
+  };
 
-    state = {
-        item: [
-            'Latte', 'Pane', 'Carne', 'Pesce'
-        ],
-        addItems: ''
-    }
+  eventHandler = (event) => {
+    this.setState((state) => {
+      return { addItems: (state.addItems = event.target.value) };
+    });
+  };
 
-    eventHandler = (event) => {
-        this.setState((state) => {
-            return { addItems: (state.addItems = event.target.value) }
-        })
-    }
+  adder = () => {
+    this.setState((state) => {
+      return { item: state.item.concat(this.state.addItems), addItems: "" };
+    });
+  };
 
-    adder = () => {
-        this.setState((state) => {
-            return { item: state.item.concat(this.state.addItems), addItems: ''} 
-        })
-    }
+  remover = (item) => {
+    this.setState((state) => {
+      const array = state.item.filter((todo) => {
+        return todo !== item;
+      });
+      return { item: (state.item = array) };
+    });
+  };
 
-    remover = (item) => {
-        this.setState((state) => {
-            const array = state.item.filter((todo) => {
-                return todo !== item;
-            });
-            return {item: (state.item = array) };
-        });
-    }
+  reset = () => {
+    this.setState({ item: ["Latte", "Pane", "Carne", "Pesce"] });
+  };
 
-
-    reset = () => {this.setState({item:[
-        'Latte', 'Pane', 'Carne', 'Pesce'
-    ]})}
-
-    render() {
-
-        return (
-            <div>
-        <ul>
-          {this.state.item.map((item, index) => (
-            <li key={index}>
-              {item}
-              <button
-                key={index + "btn"}
-                onClick={() => {
-                  this.remover(item);
-                }}
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
+  render() {
+    return (
+      <div>
+        {this.props.children(this.state.item, this.remover)}
         <input
           type="text"
           value={this.state.addItems}
