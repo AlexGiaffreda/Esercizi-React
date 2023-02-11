@@ -1,7 +1,7 @@
-export default function Sum(props){
+export default function Sum({numbers = [4, 1, 41]}){
     return(
         <h1>
-            {props.numbers.reduce((total, current) => {return (total += current) })}
+            {numbers.reduce((total, current) => {return (total += current) })}
         </h1>
     )
 }

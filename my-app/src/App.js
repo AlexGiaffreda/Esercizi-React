@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <Welcome />
-      <Sum numbers={[4, 1, 41]} />
+      <Sum />
     </div>
   )
 }
