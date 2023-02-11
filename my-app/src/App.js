@@ -2,7 +2,7 @@ import Counter from "./Counter";
 import {useState} from "react";
 import Login from "./Login";
 import GithubUser from './GithubUser';
-const array=['Alex-Giaffreda']
+const array=['AlexGiaffreda']
 
 function App() {
 
