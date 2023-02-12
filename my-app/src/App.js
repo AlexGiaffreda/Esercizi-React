@@ -2,8 +2,13 @@ import Counter from './Counter';
 import {useState} from 'react'
 import FilterdList from './FilteredList';
 import CarDetails from './carDetails';
+import DisplayLanguage from './DisplayLanguage';
+import { LanguageContext } from './LanguageContext';
+import Title from './Title';
 
 function App() {
+
+  const [language, setLanguage] = useState('eng')
 
   const data={
     model:'ford ecosport',
@@ -42,12 +47,27 @@ function App() {
     setToggle((s)=>!s)
   }
 
+  function selectHandler(event){
+    setLanguage(event.target.value)
+ }
+
+
+
   return (
     <div className="App">
       {toggle && <Counter onCounterChange={onCounterChange}/>}
      <button onClick={handleButton} >Toggle</button>
      <FilterdList list={list}/>
      <CarDetails data={data}/>
+     <select value={language} onChange={selectHandler}>
+        <option value='en'>ENGLISH</option>
+        <option value='it'>ITALIANO</option>
+      </select>
+      <LanguageContext.Provider value={language}>
+        <DisplayLanguage>
+          <Title />
+        </DisplayLanguage>
+      </LanguageContext.Provider>
     </div>
   );
 }
