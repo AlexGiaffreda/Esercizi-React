@@ -1,6 +1,7 @@
 import Counter from './Counter';
 import Login from './Login';
 import { useState } from 'react';
+import GithubUser from './GithubUser';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Login />
       {toggle && <Counter onCounterChange={onCounterChange}/>}
       <button onClick={handleButton}>Toggle</button>
+      <GithubUser username={'AlexGiaffreda'}/>
     </div>
     
   );
