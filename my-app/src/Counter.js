@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 
+function Counter({ initialValue = 0, onCounterChange }) {
+    const [counter, setCounter] = useState(initialValue);
 
+useEffect(()=>{
+    console.log('I have mounted')
+    return()=>{
+        console.log('I am about to be unmounted')
+    }
+  },[])
 
-function Counter({initialValue = 0, onCounterChange }){
-    const [counter, setCounter] = useState(initialValue)
-    useEffect(() => {
-        onCounterChange(counter)
-    }, [counter]);
-    
+  useEffect(() => {
+    onCounterChange(counter);
+  }, [counter]);
 
     function handleCounterIncrement() {
         setCounter((counter) => counter + 1)
@@ -24,6 +29,6 @@ function Counter({initialValue = 0, onCounterChange }){
             <button onClick={reset}>reset</button>
         </div>
     )
-}
+    }
 
 export default Counter
