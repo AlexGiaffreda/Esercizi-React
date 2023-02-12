@@ -1,11 +1,16 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react';
 
 
-function Counter({initialValue = 0}){
+
+function Counter({initialValue = 0, onCounterChange }){
     const [counter, setCounter] = useState(initialValue)
+    useEffect(() => {
+        onCounterChange(counter)
+    }, [counter]);
+    
 
-    function handleCounterIncrement(){
-        setCounter(counter => counter + 1)
+    function handleCounterIncrement() {
+        setCounter((counter) => counter + 1)
     }
 
     function reset(){
