@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import GithubUser from './GithubUser';
+import { SWRConfig } from "swr";
+const fetcher = (url) => fetch(url).then((resp) => resp.json());
 const array=['AlexGiaffreda']
 
 function App() {
@@ -17,17 +19,27 @@ function App() {
   }
 
   return (
+    <SWRConfig value={{ fetcher }}>
     <div className="App">
-     {array.map ((element)=>{return(
-        <div>
+      {array.map((element) => {
+        return (
+          <>
+
+      {element!==""&&
+        <div style={{border: "1px solid red,",width:'500px', height:'500px'}}>
         <GithubUser username={element}/>
-        </div>
-        )})}
+        </div>}
+        </>
+
+)})}
+
      <form onSubmit={launchData}>
      <input type='text' name='insertName' value={name} onChange={insertNameHandler} ></input>
      <button type='submit' onClick={launchData}>Start</button>
      </form>
     </div>
+    </SWRConfig>
   );
 }
+
 export default App;
