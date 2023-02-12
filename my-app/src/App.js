@@ -1,8 +1,16 @@
 import Counter from './Counter';
 import {useState} from 'react'
 import FilterdList from './FilteredList';
+import CarDetails from './carDetails';
 
 function App() {
+
+  const data={
+    model:'ford ecosport',
+    color:'bianco',
+    year:2016
+
+  }
 
   const [list, setList] = useState([{
     id: 1,
@@ -39,6 +47,7 @@ function App() {
       {toggle && <Counter onCounterChange={onCounterChange}/>}
      <button onClick={handleButton} >Toggle</button>
      <FilterdList list={list}/>
+     <CarDetails data={data}/>
     </div>
   );
 }
