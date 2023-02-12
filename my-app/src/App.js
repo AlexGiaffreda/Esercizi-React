@@ -2,6 +2,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Welcome from './Welcome';
 import Counter from './Counter';
 import ShowGithubUser from './ShowGithubUser';
+import GithubUser from './GithubUser';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           {" "}
           1
         </Link>
-        <Link to="/githubuser/AlexGiaffreda">
+        <Link to="/user">
           2
         </Link>
         <Link to="/">
@@ -22,8 +23,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome name='Alex'/>}></Route>
         <Route path='/counter' element={<Counter/>}></Route>
-        <Route path='/githubuser'>
-          <Route path=':name' element={<ShowGithubUser />} />
+        <Route path="user" element={<ShowGithubUser />}>
+          <Route path=':name' element={<GithubUser />} />
         </Route>
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
